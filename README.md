@@ -2,7 +2,7 @@
 
 ## My CodeIgniter3 Coding Standard
 
-[CodeIgniter](https://codeigniter.com) 4 coding standard for use with [PHP_CodeSniffer 3](https://github.com/squizlabs/PHP_CodeSniffer). (Converted from my old PHP_CodeSniffer 2.x version) 
+[CodeIgniter](https://codeigniter.com) 3 coding standard for use with [PHP_CodeSniffer 3](https://github.com/squizlabs/PHP_CodeSniffer). (Converted from my old PHP_CodeSniffer 2.x version) 
 
 ***Still a work in progress but usable.***
 
