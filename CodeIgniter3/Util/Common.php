@@ -22,6 +22,36 @@ use PHP_CodeSniffer\Util\Common as BaseCommon;
 class Common extends BaseCommon
 {
 
+    /**
+     * A list of all PHP magic methods.
+     *
+     * @var array
+     */
+    public static $magicMethods = array(
+                                   'construct'  => true,
+                                   'destruct'   => true,
+                                   'call'       => true,
+                                   'callstatic' => true,
+                                   'get'        => true,
+                                   'set'        => true,
+                                   'isset'      => true,
+                                   'unset'      => true,
+                                   'sleep'      => true,
+                                   'wakeup'     => true,
+                                   'tostring'   => true,
+                                   'set_state'  => true,
+                                   'clone'      => true,
+                                   'invoke'     => true,
+                                   'debuginfo'  => true,
+                                  );
+
+    /**
+     * Allowed public methodNames
+     *
+     * @var array
+     */
+    public static $publicMethodNames = array('_remap' => true);
+
 
     /**
      * Is lower snake case
@@ -61,6 +91,28 @@ class Common extends BaseCommon
         return true;
 
     }//end hasUnderscorePrefix()
+
+
+    /**
+     * Pluralize
+     *
+     * Basic pluralize intended for use in error messages
+     * tab/s, space/s, error/s etc.
+     *
+     * @param string $string String.
+     * @param float  $num    Number.
+     *
+     * @return string
+     */
+    public static function pluralize($string, $num)
+    {
+        if ($num > 1) {
+            return $string.'s';
+        } else {
+            return $string;
+        }
+
+    }//end pluralize()
 
 
 }//end class

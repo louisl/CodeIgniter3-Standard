@@ -87,6 +87,13 @@ class ControlStructureSpacingSniff implements Sniff
         $parenCloser    = $tokens[$stackPtr]['parenthesis_closer'];
         $nextContentPtr = $phpcsFile->findNext(T_WHITESPACE, ($parenOpener + 1), null, true);
 
+        // If T_BOOLEAN_NOT "!".
+        if ($tokens[$nextContentPtr]['code'] === T_BOOLEAN_NOT) {
+            $isBooleanNot = true;
+        } else {
+            $isBooleanNot = false;
+        }
+
         $spaceAfterOpen = 0;
         if ($tokens[($parenOpener + 1)]['code'] === T_WHITESPACE) {
             if (strpos($tokens[($parenOpener + 1)]['content'], $phpcsFile->eolChar) !== false) {
@@ -96,7 +103,7 @@ class ControlStructureSpacingSniff implements Sniff
             }
         }
 
-        if ($spaceAfterOpen !== $this->requiredSpacesAfterOpen) {
+        if ($spaceAfterOpen !== $this->requiredSpacesAfterOpen && $isBooleanNot === false) {
             $error = 'Expected %s spaces after opening bracket; %s found';
             $data  = array(
                       $this->requiredSpacesAfterOpen,
